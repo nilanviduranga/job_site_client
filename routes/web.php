@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProfileController;
+use App\Models\category;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -43,8 +47,24 @@ Route::get('/jobs', function () {
     return Inertia::render('Jobsite/ViewJob');
 })->middleware(['auth', 'verified'])->name('myNetwork');
 
+
+//-----------About Me Routes----------------
+
 Route::get('/job', function () {
     return Inertia::render('Jobsite/aboutMe');
 })->middleware(['auth', 'verified'])->name('aboutme');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ClientController::class, 'getProfile'])->name('profile.get');
+    Route::put('/profile', [ClientController::class, 'updateProfile'])->name('profile.update');
+});
+
+
+//-----------My Jobs Routes----------------
+// Route to fetch categories
+Route::get('/categories', function () {
+    return category::all();
+})->name('categories.get');
+Route::post('/jobs', [JobController::class, 'store'])->name('store_jobs');
 
 require __DIR__ . '/auth.php';
