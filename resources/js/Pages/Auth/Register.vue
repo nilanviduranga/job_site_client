@@ -1,9 +1,6 @@
 <script setup>
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const form = useForm({
@@ -24,90 +21,97 @@ const submit = () => {
     <GuestLayout>
         <Head title="Register" />
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="name" value="Name" />
+        <section class="vh-100" style="background-color: #f7f7f7;">
+            <div class="container h-100">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col-lg-10 col-xl-9">
+                        <div class="card shadow-sm" style="border-radius: 15px;">
+                            <div class="card-body p-md-5">
+                                <div class="row justify-content-center">
+                                    <!-- Form Section -->
+                                    <div class="col-md-8 col-lg-6">
+                                        <h2 class="text-center fw-bold mb-4">Sign Up</h2>
+                                        <form @submit.prevent="submit" class="mx-1 mx-md-4">
 
-                <TextInput
-                    id="name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.name"
-                    required
-                    autofocus
-                    autocomplete="name"
-                />
+                                            <!-- Name Input -->
+                                            <div class="form-group mb-4">
+                                                <label for="name" class="form-label">Your Name</label>
+                                                <input type="text" v-model="form.name" id="name" required autofocus
+                                                    class="form-control" placeholder="Enter your name" />
+                                                <InputError :message="form.errors.name" class="mt-1 text-danger" />
+                                            </div>
 
-                <InputError class="mt-2" :message="form.errors.name" />
+                                            <!-- Email Input -->
+                                            <div class="form-group mb-4">
+                                                <label for="email" class="form-label">Your Email</label>
+                                                <input type="email" v-model="form.email" id="email" required
+                                                    class="form-control" placeholder="Enter your email" />
+                                                <InputError :message="form.errors.email" class="mt-1 text-danger" />
+                                            </div>
+
+                                            <!-- Password Input -->
+                                            <div class="form-group mb-4">
+                                                <label for="password" class="form-label">Password</label>
+                                                <input type="password" v-model="form.password" id="password" required
+                                                    class="form-control" placeholder="Enter a password" />
+                                                <InputError :message="form.errors.password" class="mt-1 text-danger" />
+                                            </div>
+
+                                            <!-- Password Confirmation -->
+                                            <div class="form-group mb-4">
+                                                <label for="password_confirmation" class="form-label">Confirm Password</label>
+                                                <input type="password" v-model="form.password_confirmation" id="password_confirmation" required
+                                                    class="form-control" placeholder="Repeat your password" />
+                                                <InputError :message="form.errors.password_confirmation" class="mt-1 text-danger" />
+                                            </div>
+
+                                            <!-- Terms and Conditions Checkbox -->
+                                            <div class="form-check d-flex justify-content-center mb-3">
+                                                <input class="form-check-input" type="checkbox" id="terms" required />
+                                                <label class="form-check-label ms-2" for="terms">
+                                                    I agree to the <a href="#" class="text-primary">Terms of Service</a>
+                                                </label>
+                                            </div>
+
+                                            <!-- Already Registered Link -->
+                                            <div class="text-center mb-3">
+                                                <Link :href="route('login')" class="text-secondary">Already registered? Log in</Link>
+                                            </div>
+
+                                            <!-- Submit Button -->
+                                            <div class="d-flex justify-content-center">
+                                                <button type="submit" :class="{ 'opacity-50': form.processing }"
+                                                    :disabled="form.processing" class="btn btn-primary btn-lg px-5">
+                                                    Register
+                                                </button>
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                    <!-- Image Section -->
+                                    <div class="col-md-8 col-lg-6 d-flex align-items-center justify-content-center mt-4 mt-lg-0">
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                                            class="img-fluid" alt="Registration illustration" style="max-width: 80%;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="mt-4">
-                <InputLabel for="email" value="Email" />
-
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autocomplete="username"
-                />
-
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="new-password"
-                />
-
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel
-                    for="password_confirmation"
-                    value="Confirm Password"
-                />
-
-                <TextInput
-                    id="password_confirmation"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password_confirmation"
-                    required
-                    autocomplete="new-password"
-                />
-
-                <InputError
-                    class="mt-2"
-                    :message="form.errors.password_confirmation"
-                />
-            </div>
-
-            <div class="mt-4 flex items-center justify-end">
-                <Link
-                    :href="route('login')"
-                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                    Already registered?
-                </Link>
-
-                <PrimaryButton
-                    class="ms-4"
-                    :class="{ 'opacity-25': form.processing }"
-                    :disabled="form.processing"
-                >
-                    Register
-                </PrimaryButton>
-            </div>
-        </form>
+        </section>
     </GuestLayout>
 </template>
+
+<style>
+.h-custom {
+    height: calc(100% - 80px);
+}
+
+@media (max-width: 768px) {
+    .h-custom {
+        height: 100%;
+    }
+}
+</style>
