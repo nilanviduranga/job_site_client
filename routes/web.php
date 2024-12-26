@@ -43,9 +43,6 @@ Route::get('/postjob', function () {
     return Inertia::render('Jobsite/AddNewJob');
 })->middleware(['auth', 'verified'])->name('postjob');
 
-Route::get('/jobs', function () {
-    return Inertia::render('Jobsite/ViewJob');
-})->middleware(['auth', 'verified'])->name('myNetwork');
 
 
 //-----------About Me Routes----------------
@@ -65,6 +62,13 @@ Route::middleware('auth')->group(function () {
 Route::get('/categories', function () {
     return category::all();
 })->name('categories.get');
+
+Route::get('/jobs', function () {
+    return Inertia::render('Jobsite/ViewJob');
+})->middleware(['auth', 'verified'])->name('myNetwork');
 Route::post('/jobs', [JobController::class, 'store'])->name('store_jobs');
+
+Route::get('/fetch/categories', [JobController::class, 'fetch_my_jobs'])->name('fetch_my_jobs');
+
 
 require __DIR__ . '/auth.php';

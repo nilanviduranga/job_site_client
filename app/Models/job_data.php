@@ -14,16 +14,20 @@ class job_data extends Model
         'description',
         'category_id',
         'location',
-        'city',
+        'male',
+        'female',
+        'both',
         'min_age',
         'max_age',
         'salary',
         'start_date',
         'end_date',
+        'user_id',
     ];
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(category::class);
     }
+
 }

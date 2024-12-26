@@ -8,6 +8,11 @@ const form = useForm({
     email: '',
     password: '',
     password_confirmation: '',
+    address: '',
+    phone: '',
+    whatsapp: '',
+    gender: '',
+    dob: '',
 });
 
 const submit = () => {
@@ -19,7 +24,6 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-
         <Head title="Register" />
 
         <section class="vh-100" style="background-color: #f7f7f7;">
@@ -33,7 +37,6 @@ const submit = () => {
                                     <div class="col-md-8 col-lg-6">
                                         <h2 class="text-center fw-bold mb-4">Sign Up</h2>
                                         <form @submit.prevent="submit" class="mx-1 mx-md-4">
-
                                             <!-- Name Input -->
                                             <div class="form-group mb-4">
                                                 <label for="name" class="form-label">Your Full Name</label>
@@ -50,8 +53,6 @@ const submit = () => {
                                                 <InputError :message="form.errors.email" class="mt-1 text-danger" />
                                             </div>
 
-
-
                                             <!-- Address Input -->
                                             <div class="form-group mb-4">
                                                 <label for="address" class="form-label">Your Address</label>
@@ -62,20 +63,42 @@ const submit = () => {
 
                                             <!-- Phone Input -->
                                             <div class="form-group mb-4">
-                                                <label for="phone" class="form-label>">Your Phone</label>
+                                                <label for="phone" class="form-label">Your Phone</label>
                                                 <input type="text" v-model="form.phone" id="phone" required
                                                     class="form-control" placeholder="Enter your phone" />
+                                                <InputError :message="form.errors.phone" class="mt-1 text-danger" />
                                             </div>
 
-                                            <!--Whatsapp Input-->
+                                            <!-- Whatsapp Input -->
                                             <div class="form-group mb-4">
                                                 <label for="whatsapp" class="form-label">Your Whatsapp</label>
                                                 <input type="text" v-model="form.whatsapp" id="whatsapp" required
                                                     class="form-control" placeholder="Enter your whatsapp" />
+                                                <InputError :message="form.errors.whatsapp" class="mt-1 text-danger" />
+                                            </div>
+
+                                            <!-- Gender Input -->
+                                            <div class="form-group mb-4">
+                                                <label for="gender" class="form-label">Gender</label>
+                                                <select v-model="form.gender" id="gender" required class="form-control">
+                                                    <option value="" disabled selected>Select your gender</option>
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
+                                                    <option value="other">Other</option>
+                                                </select>
+                                                <InputError :message="form.errors.gender" class="mt-1 text-danger" />
+                                            </div>
+
+                                            <!-- DOB Input -->
+                                            <div class="form-group mb-4">
+                                                <label for="dob" class="form-label">Date of Birth</label>
+                                                <input type="date" v-model="form.dob" id="dob" required
+                                                    class="form-control" />
+                                                <InputError :message="form.errors.dob" class="mt-1 text-danger" />
                                             </div>
 
                                             <!-- Password Input -->
-                                            <div class=" form-group mb-4">
+                                            <div class="form-group mb-4">
                                                 <label for="password" class="form-label">Password</label>
                                                 <input type="password" v-model="form.password" id="password" required
                                                     class="form-control" placeholder="Enter a password" />
@@ -133,15 +156,3 @@ const submit = () => {
         </section>
     </GuestLayout>
 </template>
-
-<style>
-.h-custom {
-    height: calc(100% - 80px);
-}
-
-@media (max-width: 768px) {
-    .h-custom {
-        height: 100%;
-    }
-}
-</style>

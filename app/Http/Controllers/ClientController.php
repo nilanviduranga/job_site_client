@@ -31,6 +31,7 @@ class ClientController extends Controller
      */
     public function updateProfile(Request $request)
     {
+//dd($request);
         $user = Auth::user();
 
         if (!$user) {
@@ -44,6 +45,8 @@ class ClientController extends Controller
             'phone' => 'required|string|max:20',
             'whatsapp' => 'nullable|string|max:20',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'gender' => 'required|in:male,female,other',
+            'birthday' => 'required|date|before:today',
         ]);
 
         // Update the user information
@@ -53,6 +56,8 @@ class ClientController extends Controller
             'phone' => $validated['phone'],
             'whatsapp' => $validated['whatsapp'] ?? null,
             'email' => $validated['email'],
+            'gender' => $validated['gender'],
+            'dob' => $validated['birthday']
         ]);
 
         return response()->json(['message' => 'Profile updated successfully.']);

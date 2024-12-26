@@ -131,11 +131,13 @@
 
 <script>
 import AppLayout from '@/Layouts/App.vue';
+import { Link, router } from "@inertiajs/vue3";
 import axios from 'axios';
 
 export default {
     components: {
-        AppLayout
+        AppLayout,
+        Link,
     },
     data() {
         return {
@@ -166,7 +168,7 @@ export default {
     },
     mounted() {
         this.fetchCategories();
-    },
+    }, 
     methods: {
         // Fetch job categories from the backend
         async fetchCategories() {
@@ -208,9 +210,12 @@ export default {
             formData.append("start_date", this.job.start_date);
             formData.append("end_date", this.job.end_date);
 
-            // Append gender selections and counts
-            formData.append("genderSelections", JSON.stringify(this.genderSelections));
-            formData.append("genderCounts", JSON.stringify(this.genderCounts));
+            formData.append("male", this.genderCounts.male);
+            formData.append("female", this.genderCounts.female);
+            formData.append("both", this.genderCounts.both);
+
+            //console.log("hello");
+            // console.log(this.genderCounts.both);
 
             // If you have any files to upload, you can append them as well
             // formData.append("image", this.category.image);
@@ -223,15 +228,10 @@ export default {
                     },
                 });
 
-                if (response.status === 200) {
-                    alert('Job post created successfully!');
-                    this.resetForm(); // Optionally reset the form after submission
-                } else {
-                    alert('Failed to create job post. Please try again.');
-                }
+                router.visit('/jobs');
             } catch (error) {
                 console.error('Error posting job:', error);
-                alert('An error occurred while posting the job. Please try again later.');
+                //     alert('An error occurred while posting the job. Please try again later.');
             }
         },
 

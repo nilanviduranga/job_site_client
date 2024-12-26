@@ -63,6 +63,33 @@
                                                 />
                                                 <span v-if="errors.email" class="text-danger">{{ errors.email }}</span>
                                             </li>
+
+                                            <!-- Gender Section -->
+                                            <li class="list-group-item">
+                                                <strong>Gender:</strong>
+                                                <select
+                                                    class="form-control"
+                                                    v-model="profile.gender"
+                                                    :disabled="!isEditing"
+                                                >
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
+                                                    <option value="other">Other</option>
+                                                </select>
+                                                <span v-if="errors.gender" class="text-danger">{{ errors.gender }}</span>
+                                            </li>
+
+                                            <!-- Birthday Section -->
+                                            <li class="list-group-item">
+                                                <strong>Birthday:</strong>
+                                                <input
+                                                    type="date"
+                                                    class="form-control"
+                                                    v-model="profile.birthday"
+                                                    :disabled="!isEditing"
+                                                />
+                                                <span v-if="errors.birthday" class="text-danger">{{ errors.birthday }}</span>
+                                            </li>
                                         </ul>
                                     </div>
 
@@ -130,6 +157,8 @@ export default {
                 phone: '',
                 whatsapp: '',
                 email: '',
+                gender: '', // Add gender field
+                birthday: '', // Add birthday field
             },
             errors: {}, // Store validation errors here
         };
@@ -171,6 +200,8 @@ export default {
                     phone: user.phone,
                     whatsapp: user.whatsapp,
                     email: user.email,
+                    gender: user.gender, // Add gender to profile
+                    birthday: user.dob, // Add birthday to profile
                 };
             } catch (error) {
                 console.error('Error fetching profile:', error);

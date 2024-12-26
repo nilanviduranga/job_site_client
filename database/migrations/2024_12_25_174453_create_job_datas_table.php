@@ -17,12 +17,16 @@ return new class extends Migration
             $table->text('description');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->string('location');
-            $table->string('city');
+            $table->integer('male');
+            $table->integer('female');
+            $table->integer('both');
             $table->integer('min_age');
             $table->integer('max_age');
             $table->string('salary')->nullable();
+            $table->string('job_status');
             $table->timestamp('start_date');
             $table->timestamp('end_date');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
