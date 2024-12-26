@@ -84,7 +84,6 @@ const submit = () => {
                                                     <option value="" disabled selected>Select your gender</option>
                                                     <option value="male">Male</option>
                                                     <option value="female">Female</option>
-                                                    <option value="other">Other</option>
                                                 </select>
                                                 <InputError :message="form.errors.gender" class="mt-1 text-danger" />
                                             </div>

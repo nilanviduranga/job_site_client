@@ -19,4 +19,9 @@ class category extends Model
     {
         return $this->hasMany(job_data::class);
     }
+
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
 }

@@ -52,4 +52,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function category()
+    {
+        return $this->belongsTo(category::class);
+    }
 }

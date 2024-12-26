@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProfileController;
 use App\Models\category;
@@ -69,6 +70,10 @@ Route::get('/jobs', function () {
 Route::post('/jobs', [JobController::class, 'store'])->name('store_jobs');
 
 Route::get('/fetch/categories', [JobController::class, 'fetch_my_jobs'])->name('fetch_my_jobs');
+
+//-----home page----
+Route::get('/fetch/available-jobs', [HomeController::class, 'fetch_available_jobs'])->name('fetch_available_jobs');
+Route::post('apply/job', [HomeController::class, 'apply_to_job'])->name('apply_to_job');
 
 
 require __DIR__ . '/auth.php';
