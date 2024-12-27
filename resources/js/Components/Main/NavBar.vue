@@ -34,8 +34,15 @@
                             </Link>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex flex-column text-center" aria-current="page" :href="route('myNetwork')"><i
-                                    class="fas fa-user-friends fa-lg"></i><span class="small">My Network</span></a>
+                            <Link class="nav-link d-flex flex-column text-center" aria-current="page"
+                                :href="route('myJobs')"><i class="fas fa-home fa-lg"></i><span
+                                class="small">My Jobs</span>
+                            </Link>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex flex-column text-center" aria-current="page"
+                                :href="route('myNetwork')"><i class="fas fa-user-friends fa-lg"></i><span
+                                    class="small">My Network</span></a>
                         </li>
                         <!-- <li class="nav-item">
                             <a class="nav-link d-flex flex-column text-center" aria-current="page" href="#"><i
@@ -43,8 +50,8 @@
                         </li> -->
                         <li class="nav-item">
                             <Link class="nav-link d-flex flex-column text-center" aria-current="page"
-                                :href="route('aboutme')"><i class="fas fa-comment-dots fa-lg"></i><span
-                                class="small">My Profile</span>
+                                :href="route('aboutme')"><i class="fas fa-comment-dots fa-lg"></i><span class="small">My
+                                Profile</span>
                             </Link>
                         </li>
                         <li>

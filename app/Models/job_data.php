@@ -33,4 +33,8 @@ class job_data extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function jb_processes()
+    {
+        return $this->hasMany(jb_process::class, 'job_id', 'id');
+    }
 }

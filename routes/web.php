@@ -69,11 +69,22 @@ Route::get('/jobs', function () {
 })->middleware(['auth', 'verified'])->name('myNetwork');
 Route::post('/jobs', [JobController::class, 'store'])->name('store_jobs');
 
-Route::get('/fetch/categories', [JobController::class, 'fetch_my_jobs'])->name('fetch_my_jobs');
+Route::get('/fetch/myJobs', [JobController::class, 'fetch_my_jobs'])->name('fetch_my_jobs');
+
+Route::post('/fetch/myJobs/responce', [JobController::class, 'view_response'])->name('view_response');
+
+Route::post('/hire-candidate', [JobController::class, 'hireCandidate'])->name('hire_candidate');
+Route::post('/reject-candidate', [JobController::class, 'rejectCandidate'])->name('reject_candidate');
 
 //-----home page----
 Route::get('/fetch/available-jobs', [HomeController::class, 'fetch_available_jobs'])->name('fetch_available_jobs');
-Route::post('apply/job', [HomeController::class, 'apply_to_job'])->name('apply_to_job');
+Route::post('apply/to-job', [HomeController::class, 'apply_to_job'])->name('apply_to_job')->middleware('auth');
+
+//------myJ0bs-----
+Route::get('/myjobs', function () {
+    return Inertia::render('Jobsite/myJobs');
+})->middleware(['auth', 'verified'])->name('myJobs');
+Route::get('/fetch/applied-jobs', [HomeController::class, 'fetch_Applyed_jobs'])->name('fetch_Applyed_jobs')->middleware('auth');
 
 
 require __DIR__ . '/auth.php';
