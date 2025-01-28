@@ -51,8 +51,8 @@
 
                                                     <!-- Action Buttons -->
                                                     <div class="d-flex flex-column mt-4">
-                                                        <button class="btn btn-success btn-sm mb-2" type="button"
-                                                            @click="applyJob(job.id)">Apply</button>
+                                                        <!-- <button class="btn btn-success btn-sm mb-2" type="button"
+                                                            @click="applyJob(job.id)">Apply</button> -->
                                                     </div>
 
                                                     <!-- Poster Contact Info -->
