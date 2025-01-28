@@ -54,31 +54,31 @@ const submit = () => {
                                             </div>
 
                                             <!-- Address Input -->
-                                            <div class="form-group mb-4">
+                                            <!-- <div class="form-group mb-4">
                                                 <label for="address" class="form-label">Your Address</label>
                                                 <input type="text" v-model="form.address" id="address" required
                                                     class="form-control" placeholder="Enter your address" />
                                                 <InputError :message="form.errors.address" class="mt-1 text-danger" />
-                                            </div>
+                                            </div> -->
 
                                             <!-- Phone Input -->
-                                            <div class="form-group mb-4">
+                                            <!-- <div class="form-group mb-4">
                                                 <label for="phone" class="form-label">Your Phone</label>
                                                 <input type="text" v-model="form.phone" id="phone" required
                                                     class="form-control" placeholder="Enter your phone" />
                                                 <InputError :message="form.errors.phone" class="mt-1 text-danger" />
-                                            </div>
+                                            </div> -->
 
                                             <!-- Whatsapp Input -->
-                                            <div class="form-group mb-4">
+                                            <!-- <div class="form-group mb-4">
                                                 <label for="whatsapp" class="form-label">Your Whatsapp</label>
                                                 <input type="text" v-model="form.whatsapp" id="whatsapp" required
                                                     class="form-control" placeholder="Enter your whatsapp" />
                                                 <InputError :message="form.errors.whatsapp" class="mt-1 text-danger" />
-                                            </div>
+                                            </div> -->
 
                                             <!-- Gender Input -->
-                                            <div class="form-group mb-4">
+                                            <!-- <div class="form-group mb-4">
                                                 <label for="gender" class="form-label">Gender</label>
                                                 <select v-model="form.gender" id="gender" required class="form-control">
                                                     <option value="" disabled selected>Select your gender</option>
@@ -86,15 +86,15 @@ const submit = () => {
                                                     <option value="female">Female</option>
                                                 </select>
                                                 <InputError :message="form.errors.gender" class="mt-1 text-danger" />
-                                            </div>
+                                            </div> -->
 
                                             <!-- DOB Input -->
-                                            <div class="form-group mb-4">
+                                            <!-- <div class="form-group mb-4">
                                                 <label for="dob" class="form-label">Date of Birth</label>
                                                 <input type="date" v-model="form.dob" id="dob" required
                                                     class="form-control" />
                                                 <InputError :message="form.errors.dob" class="mt-1 text-danger" />
-                                            </div>
+                                            </div> -->
 
                                             <!-- Password Input -->
                                             <div class="form-group mb-4">
