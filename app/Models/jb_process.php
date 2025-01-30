@@ -52,7 +52,7 @@ public function view_response($id)
         'receiver_phone' => $receiverUser->phone,
         'receiver_whatsapp' => $receiverUser->whatsapp,
     ];
-dd($transformedData);
+//dd($transformedData);
     // Return the transformed data as a JSON response
     return response()->json($transformedData);
 }
