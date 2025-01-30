@@ -168,4 +168,38 @@ class JobController extends Controller
             return response()->json(['message' => 'Error rejecting candidate.', 'error' => $e->getMessage()], 500);
         }
     }
+
+    public function delete_job(Request $request)
+    {
+        // Validate input
+        $id = $request->job_id;
+        if (!$id) {
+            return response()->json(['message' => 'Job ID is required'], 400);
+        }
+    
+        // Log received job ID for debugging
+        \Log::info("Job deletion request received for job_id: " . $id);
+    
+        $job_processes = jb_process::where('job_id', $id);
+        if ($job_processes->exists()) {
+            \Log::info("Found " . $job_processes->count() . " job_process records. Deleting...");
+            $job_processes->delete();
+        } else {
+            \Log::info("No job_process records found for job_id: " . $id . ". Proceeding with job deletion.");
+        }
+    
+        $job_data = job_data::find($id);
+        if (!$job_data) {
+            \Log::warning("Job with ID $id not found. Cannot delete.");
+            return response()->json(['message' => 'Job not found'], 404);
+        }
+    
+        // Delete job_data record
+        $job_data->delete();
+        \Log::info("Successfully deleted job_data for job_id: " . $id);
+    
+        return response()->json(['message' => 'Job deleted successfully']);
+    }
+    
+    
 }

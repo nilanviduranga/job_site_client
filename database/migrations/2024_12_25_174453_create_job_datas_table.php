@@ -24,8 +24,8 @@ return new class extends Migration
             $table->integer('max_age');
             $table->string('salary')->nullable();
             $table->string('job_status');
-            $table->timestamp('start_date');
-            $table->timestamp('end_date');
+            $table->timestamp('start_date')->nullable();
+            $table->timestamp('end_date')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

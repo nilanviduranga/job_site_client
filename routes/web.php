@@ -76,6 +76,9 @@ Route::post('/fetch/myJobs/responce', [JobController::class, 'view_response'])->
 Route::post('/hire-candidate', [JobController::class, 'hireCandidate'])->name('hire_candidate');
 Route::post('/reject-candidate', [JobController::class, 'rejectCandidate'])->name('reject_candidate');
 
+//Posted Jobs Fromn me
+Route::post('/delete/job', [JobController::class, 'delete_job'])->name('delete_job');
+
 //-----home page----
 Route::get('/fetch/available-jobs', [HomeController::class, 'fetch_available_jobs'])->name('fetch_available_jobs');
 Route::post('apply/to-job', [HomeController::class, 'apply_to_job'])->name('apply_to_job')->middleware('auth');

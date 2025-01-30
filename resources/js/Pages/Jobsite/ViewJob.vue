@@ -32,9 +32,9 @@
                                             <!-- Job Image Section -->
                                             <div class="col-md-12 col-lg-4 col-xl-3 mb-4">
                                                 <div class="bg-image hover-zoom ripple rounded ripple-surface">
-                                                    <img :src="`/categoryImages/${job.category_image}`"
-                                                        class="w-100 rounded" alt="Job Category" />
-                                                </div>
+    <img :src="`/categoryImages/${job.category_image}`" class="w-100 rounded" alt="Job Category" />
+</div>
+
                                             </div>
 
                                             <!-- Job Details Section -->
@@ -207,17 +207,24 @@ export default {
                 }
             }
         },
-        async deleteJob(job_id) {
-            if (confirm("Are you sure you want to delete this job?")) {
-                try {
-                    await axios.post(route("delete_job"), { job_id });
-                    this.my_jobs = this.my_jobs.filter((job) => job.job_id !== job_id);
-                    alert("Job deleted successfully!");
-                } catch (error) {
-                    console.error("Error deleting job:", error);
-                }
-            }
-        },
+async deleteJob(job_id) {
+    if (confirm("Are you sure you want to delete this job?")) {
+        try {
+            console.log("Deleting job with ID:", job_id); // Debugging log
+
+            await axios.post(route("delete_job"), { job_id });
+
+            // Remove deleted job from the UI
+            this.my_jobs = this.my_jobs.filter(job => job.job_id !== job_id);
+
+            alert("Job deleted successfully!");
+        } catch (error) {
+            console.error("Error deleting job:", error);
+            alert("Failed to delete job.");
+        }
+    }
+}
+
     },
 };
 </script>

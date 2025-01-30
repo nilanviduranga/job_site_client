@@ -4,7 +4,12 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <!-- Container wrapper -->
-            <div class="container">
+                <div class="container">
+                <!-- Brand -->
+                <a class="navbar-brand ms-4 me-4" href="#">
+                    <img src="https://i.ibb.co/TDbwrt1k/JOBSHUB.png" height="40" alt="Job Site Logo"
+                        loading="lazy" />
+                </a>
                 <!-- Navbar brand -->
                 <a class="navbar-brand" href="#"><i class="fab fa-linkedin fa-2x"></i></a>
                 <!-- Search form -->
